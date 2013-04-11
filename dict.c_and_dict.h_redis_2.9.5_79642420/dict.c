@@ -298,6 +298,7 @@ int dictRehashMilliseconds(dict *d, int ms) {
 
     while(dictRehash(d,100)) {
         rehashes += 100;
+        //每次rehash 100个，再判断是否超时
         if (timeInMilliseconds()-start > ms) break;
     }
     return rehashes;
